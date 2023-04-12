@@ -58,3 +58,8 @@
     --light_grey: hsl(0, 0%, 86%);
     --smokey_grey: hsl(0, 1%, 44%);
 }
+
+body {
+    background-color: var(--off_white);
+    font-family: Poppins;
+}
