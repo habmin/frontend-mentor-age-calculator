@@ -101,6 +101,12 @@ body {
     background-color: var(--off_white);
     font-family: Poppins;
     font-weight: 700;
+
+    /* For centering the results box */
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .age-calc-box {
@@ -180,4 +186,23 @@ body {
 
 #result-years, #result-months, #result-days {
     color: var(--purple);
+}
+
+/* ************* */
+/* Footer Styles */
+/* ************* */
+
+footer {
+    text-align: center;
+    position: fixed;
+    bottom: 5px;   
+}
+
+.attribution {
+    width: 100%;
+    font-size: 11px;
+}
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
 }
