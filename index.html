@@ -15,23 +15,29 @@
 
   <main>
     <div class="age-calc-box">
-      <div class="input-bar">
-        <div class="day-input">
-          <label for="day">DAY</label>
-          <input type="number" id="day" name="day"/>
+        <div class="input-bar">
+          <div class="day-input">
+            <label class="form-label" for="day">DAY</label>
+            <input class="form-input" type="number" id="day" name="day" max="31" min="1"/>
+            <p class="error"></p>
+          </div>
+          <div class="month-input">
+            <label class="form-label" for="month">MONTH</label>
+            <input class="form-input" type="number" id="month" name="month" max="12" min="1"/>
+            <p class="error"></p>
+          </div>
+          <div class="year-input">
+            <label class="form-label" for="year">YEAR</label>
+            <input class="form-input" type="number" id="year" name="year" min="0"/>
+            <p class="error"></p>
+          </div>
         </div>
-        <div class="month-input">
-          <label for="month">MONTH</label>
-          <input type="number" id="month" name="month"/>
+        <div class="submit-bar">
+          <button id="submit" class="submit-arrow">
+            <img src="assets/images/icon-arrow.svg"/>
+          </button>
+          <div class="bar"></div>
         </div>
-        <div class="year-input">
-          <label for="year">YEAR</label>
-          <input type="number" id="year" name="year"/>
-        </div>
-      </div>
-      <div class="submit-bar">
-        <img src="assets/images/icon-arrow.svg"/>
-      </div>
       <div class="results-box">
         <p><span>--</span>years</p>
         <p><span>--</span>months</p>
