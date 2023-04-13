@@ -140,3 +140,13 @@ body {
 #submit:active {
     background-color: var(--off_black);
 }
+
+.results-text {
+    font-weight: 800;
+    font-style: italic;
+    font-size: 3.4rem;
+}
+
+#result-years, #result-months, #result-days {
+    color: var(--purple);
+}
