@@ -13,37 +13,37 @@
 </head>
 <body>
 
-  <main>
-    <div class="age-calc-box">
-        <div class="input-bar">
-          <div class="day-input">
-            <label class="form-label" for="day">DAY</label>
-            <input class="form-input" type="number" id="day" name="day" max="31" min="1"/>
-            <p class="error"></p>
-          </div>
-          <div class="month-input">
-            <label class="form-label" for="month">MONTH</label>
-            <input class="form-input" type="number" id="month" name="month" max="12" min="1"/>
-            <p class="error"></p>
-          </div>
-          <div class="year-input">
-            <label class="form-label" for="year">YEAR</label>
-            <input class="form-input" type="number" id="year" name="year" min="0"/>
-            <p class="error"></p>
-          </div>
+  <main class="age-calc-box">
+      <div class="input-bar">
+        <div class="day-input">
+          <label class="form-label" for="day">DAY</label>
+          <input class="form-input" type="number" id="day" name="day" max="31" min="1"/>
+          <p class="error">test</p>
         </div>
-        <div class="submit-bar">
-          <button id="submit" class="submit-arrow">
-            <img src="assets/images/icon-arrow.svg"/>
-          </button>
-          <div class="bar"></div>
+        <div class="month-input">
+          <label class="form-label" for="month">MONTH</label>
+          <input class="form-input" type="number" id="month" name="month" max="12" min="1"/>
+          <p class="error">test</p>
         </div>
+        <div class="year-input">
+          <label class="form-label" for="year">YEAR</label>
+          <input class="form-input" type="number" id="year" name="year" min="0"/>
+          <p class="error">test</p>
+        </div>
+      </div>
+
+      <div class="submit-bar">
+        <button id="submit" class="submit-arrow">
+          <img src="assets/images/icon-arrow.svg"/>
+        </button>
+        <div class="bar"></div>
+      </div>
+
       <div class="results-box">
         <p class="results-text"><span id="result-years">--</span> years</p>
         <p class="results-text"><span id="result-months">--</span> months</p>
         <p class="results-text"><span id="result-days">--</span> days</p>
       </div>
-    </div>
   </main>
   
   <footer>
