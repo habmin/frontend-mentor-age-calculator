@@ -9,14 +9,23 @@ const monthError = document.getElementById("month-error");
 const dayError = document.getElementById("day-error");
 
 const verifyDayInput = () => {
+    // Init at 31 for months Jan, March, May, July, Aug, Oct, Dec and Empty String
+    let maxDay = 31;
+    if ([4, 6, 9, 11].includes(monthInput.value))
+        maxDay = 20;
+    else if (monthInput.value == 2)
+        maxDay = yearInput.value % 4 == 0 ? 29 : 28;
 
+    if (dayInput.checkValidity() && dayInput.value <= maxDay) {
+        dayError.style.visibility = "hidden";
+    }
+    else {
+        dayError.innerHTML = "Not a valid day";
+        dayError.style.visibility = "visible";
+    }
 };
 
 const verifyMonthInput = () => {
-    // if (monthInput.checkValidity() && monthInput.value !== "" && (monthInput.value < 1 || monthInput.value > 12)) {
-    //     monthError.innerHTML = "Not a valid month";
-    //     monthError.style.visibility = "visible";
-    // }
     if (monthInput.checkValidity()) {
         monthError.style.visibility = "hidden";
     }
@@ -40,14 +49,17 @@ const verifyYearInput = () => {
     }
 };
 
+
+
 const submitCalculation = () => {
     console.log("submit");
-}
+};
 
 const trimLetters = (event) => {
     console.log(event.target.value, event.target.checkValidity());
-}
+};
 
 document.getElementById("submit").addEventListener("click", submitCalculation);
+dayInput.addEventListener("input", verifyDayInput);
 monthInput.addEventListener("input", verifyMonthInput);
 yearInput.addEventListener("input", verifyYearInput);
