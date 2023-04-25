@@ -162,7 +162,7 @@ body {
     font-style: italic;
     margin: 5px 0 5px 0;
     padding: 0;
-    /* visibility: hidden; */
+    visibility: hidden;
 }
 
 .submit-bar {
