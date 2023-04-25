@@ -13,19 +13,20 @@ const verifyDayInput = () => {
 };
 
 const verifyMonthInput = () => {
-
+    // if (monthInput.checkValidity() && monthInput.value !== "" && (monthInput.value < 1 || monthInput.value > 12)) {
+    //     monthError.innerHTML = "Not a valid month";
+    //     monthError.style.visibility = "visible";
+    // }
+    if (monthInput.checkValidity()) {
+        monthError.style.visibility = "hidden";
+    }
+    else if (!monthInput.checkValidity()) {
+        monthError.innerHTML = "Not a valid month";
+        monthError.style.visibility = "visible";
+    }
 };
 
 const verifyYearInput = () => {
-    console.log(yearInput.checkValidity(), yearInput.value);
-    console.log(yearInput.checkValidity() && yearInput.value !== "" && (yearInput.value < 1 || yearInput.value > currentDate.getFullYear()));
-    // Valid States
-    // 1. checkValidity and empty
-    // 2. check Vallidity and in range
-    // Invalid states
-    // 1. check validity fails (non-number in input)
-    
-    // 2. check validity passes but input in not in range
     if (yearInput.checkValidity() && yearInput.value !== "" && (yearInput.value < 1 || yearInput.value > currentDate.getFullYear())) {
         yearError.innerHTML = "Must be in the past";
         yearError.style.visibility = "visible";
@@ -48,4 +49,5 @@ const trimLetters = (event) => {
 }
 
 document.getElementById("submit").addEventListener("click", submitCalculation);
+monthInput.addEventListener("input", verifyMonthInput);
 yearInput.addEventListener("input", verifyYearInput);
