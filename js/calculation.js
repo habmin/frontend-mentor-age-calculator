@@ -15,10 +15,13 @@ const dayError = document.getElementById("day-error");
 const formLabels = document.querySelectorAll(".form-label");
 
 const button = document.getElementById("submit");
+const arrowIcon = document.getElementById("arrow-icon");
 
+const purpleVar = window.getComputedStyle(document.body).getPropertyValue("--pruple");
 const lightRedVar = window.getComputedStyle(document.body).getPropertyValue("--light_red");
 const lightGreyVar = window.getComputedStyle(document.body).getPropertyValue("--light_gray");
 const smokeyGreyVar = window.getComputedStyle(document.body).getPropertyValue("--smokey_gray");
+const offBlackVar = window.getComputedStyle(document.body).getPropertyValue("--off_black");
 
 const errorDisplay = (show, formNum) => {
     const elements = [[dayError, dayInput], [monthError, monthInput], [yearError, yearInput]]
@@ -101,16 +104,32 @@ const verifyYearInput = () => {
 };
 
 
-const submitCalculation = () => {
-    console.log("click")
+const scrambledDisplay = (number) => {
+    return 
+}
+
+const submitCalculation = async () => {    
     const inputDate = new Date(yearInput.value, monthInput.value - 1, dayInput.value);
     const timeDiffernce = currentDate - inputDate;
     const totalYears = Math.floor(timeDiffernce / 3.15576e10);
     const totalMonths = Math.floor((timeDiffernce - (3.15576e10 * totalYears)) / 2.6298e9);
     const totalDays = currentDate.getDate() - inputDate.getDate();
+    
+    button.disabled = true;
+    button.style.backgroundColor = offBlackVar;
+    arrowIcon.style.transform = "translateY(100px)";
+
     resultYears.innerHTML = totalYears;
     resultMonths.innerHTML = totalMonths;
     resultDays.innerHTML = totalDays;
+
+    button.disabled = false;
+    // arrowIcon.style.transtion = "none";
+    // arrowIcon.style.transform = "translateY(-100px)";
+    // arrowIcon.style.transtion = "transform 2s";
+    // arrowIcon.style.transform = "translateY(0px)";
+    // button.style.backgroundColor = purpleVar;
+
 
 };
 
