@@ -1,50 +1,50 @@
-/* *************/
-/* Font Import */
-/* *************/
+/********************************************************************/
+/*------------------------- Font Import ----------------------------*/
+/********************************************************************/
 
 @font-face {
     font-family: Poppins;
     font-style: normal;
     font-weight: 400;
-    src: url('assets/fonts/Poppins-Regular.ttf');
+    src: url('../assets/fonts/Poppins-Regular.ttf');
 }
 
 @font-face {
     font-family: Poppins;
     font-style: italic;
     font-weight: 400;
-    src: url('assets/fonts/Poppins-Italic.ttf');
+    src: url('../assets/fonts/Poppins-Italic.ttf');
 }
 
 @font-face {
     font-family: Poppins;
     font-weight: 700;
-    src: url('assets/fonts/Poppins-Bold.ttf');
+    src: url('../assets/fonts/Poppins-Bold.ttf');
 }
 
 @font-face {
     font-family: Poppins;
     font-weight: 700;
     font-style: italic;
-    src: url('assets/fonts/Poppins-BoldItalic.ttf');
+    src: url('../assets/fonts/Poppins-BoldItalic.ttf');
 }
 
 @font-face {
     font-family: Poppins;
     font-weight: 800;
-    src: url('assets/fonts/Poppins-ExtraBold.ttf');
+    src: url('../assets/fonts/Poppins-ExtraBold.ttf');
 }
 
 @font-face {
     font-family: Poppins;
     font-weight: 800;
     font-style: italic;
-    src: url('assets/fonts/Poppins-ExtraBoldItalic.ttf');
+    src: url('../assets/fonts/Poppins-ExtraBoldItalic.ttf');
 }
 
-/* ********* */
-/* Variables */
-/* ********* */
+/********************************************************************/
+/* ------------------------- Variables ---------------------------- */
+/********************************************************************/
 
 :root {
     /* Primary */
@@ -59,22 +59,12 @@
     --smokey_grey: hsl(0, 1%, 44%);
 }
 
-/* *********** */
-/* Text Styles */
-/* *********** */
+/********************************************************************/
+/* ----------------------- Style Resetters ------------------------ */
+/********************************************************************/
 
-.italic {
-    font-style: italic;
-}
 
-.purple {
-    color: var(--purple);
-}
-
-.off-black {
-    color: var(--off_black);
-}
-
+/* Remove number scroll/spin wheel for input:number */
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -87,13 +77,13 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-/* ********************* */
-/* Main container styles */
-/* ********************* */
+/********************************************************************/
+/* ------------------- Main container styles ---------------------- */
+/********************************************************************/
 
 body {
     background-color: var(--off_white);
-    font-family: Poppins;
+    font-family: Poppins, Helvetica, sans-serif;
     font-weight: 700;
     padding: 0px 20px 0 20px;
     margin: 0px;
@@ -140,7 +130,7 @@ body {
 }
 
 .form-input {
-    font-family: Poppins;
+    font-family: Poppins, Helvetica, sans-serif;
     font-weight: 700;
     color: var(--off_black);
     box-shadow: none;
@@ -210,7 +200,7 @@ body {
     transition: transform 1.4s;
 }
 
-img:active {
+#arrow-icon:active {
     transform: translateY(100px);
 }
 
@@ -243,9 +233,9 @@ img:active {
     transition: left .5s cubic-bezier(.1, .4, .5, 1);
 }
 
-/* ************* */
-/* Footer Styles */
-/* ************* */
+/********************************************************************/
+/* ----------------------- Footer Styles -------------------------- */
+/********************************************************************/
 
 footer {
     text-align: center;
@@ -260,89 +250,4 @@ footer {
 
 .attribution a {
     color: hsl(228, 45%, 44%);
-}
-
-/* ************************** */
-/* Responsive for Mobile View */
-/* ************************** */
-
-@media screen and (max-width: 700px) {
-    .age-calc-box {
-        height: fit-content;
-        padding: 0 0 1.5rem 0;
-        border-radius: 30px 30px 100px 30px;
-    }
-
-    .input-bar {
-        margin: 2.5rem 1.5rem 1.5rem 1.5rem;
-        padding: 0;
-        width: 90%;
-        justify-content: center;
-        align-items: right;
-    }
-
-    .day-input, .month-input, .year-input{
-        margin: 0;
-        padding: 0;
-        width: 33%;
-    }
-
-    .form-label {
-        font-size: .8rem;
-        letter-spacing: 0.25em;
-        margin: .4rem 0 .4rem 0;
-    }
-
-    .form-input {
-        font-size: 4.5vw;
-        height: 1.6rem;
-        width: 14.5vw;
-        padding: .8rem;
-    }
-
-    .error {
-        width: 80%;
-        opacity: 1;
-    }
-
-    .submit-bar {
-        position: relative;
-        text-align: center;
-        margin: 1.5rem 1.5rem 1.5rem 1.5rem;
-    }
-
-    #submit {
-        text-align: center;
-        position: inherit;
-        z-index: 2;
-        background-color: var(--purple);
-        border-radius: 50%;
-        border: none;
-        height: 14.5vw;
-        width: 14.5vw;
-    }
-
-    #submit img {
-        height: 6.6vw;
-        width: 6.6vw;
-    }
-
-    .results-line {
-        margin-bottom: 2rem;
-    }
-
-    .results-box {
-        margin: 1.5rem 0 0 0;
-        padding: 0;
-    }
-    
-    .results-text {
-        font-size: 14vw;
-        margin: -2rem 0 -2rem 1.5rem;
-        letter-spacing: -.08rem;
-    }
-
-    .results-label {
-        margin-left: 2rem;
-    }
 }
