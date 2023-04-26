@@ -4,9 +4,16 @@ const yearInput = document.getElementById("year");
 const monthInput = document.getElementById("month");
 const dayInput = document.getElementById("day");
 
+const resultYears = document.getElementById("result-years");
+const resultMonths = document.getElementById("result-months");
+const resultDays = document.getElementById("result-days");
+
 const yearError = document.getElementById("year-error");
 const monthError = document.getElementById("month-error");
 const dayError = document.getElementById("day-error");
+
+const button = document.getElementById("submit");
+button.disabled = true;
 
 yearInput.setAttribute("max", `${currentDate.getFullYear()}`);
 
@@ -36,7 +43,7 @@ const verifyMonthInput = () => {
         monthError.style.visibility = "hidden";
         return true;
     }
-    else if (!monthInput.checkValidity()) {
+    else {
         monthError.innerHTML = "Must be a valid month";
         monthError.style.visibility = "visible";
         return false;
@@ -48,7 +55,7 @@ const verifyYearInput = () => {
         yearError.style.visibility = "hidden";
         return true;
     }
-    else if (!yearInput.checkValidity()) {
+    else {
         yearError.innerHTML = "Must be a valid year";
         yearError.style.visibility = "visible";
         return false;
@@ -57,32 +64,41 @@ const verifyYearInput = () => {
 
 
 const submitCalculation = () => {
-    console.log("submit");
+    console.log("click")
+    const inputDate = new Date(yearInput.value, monthInput.value - 1, dayInput.value);
+    const timeDiffernce = currentDate - inputDate;
+    const totalYears = Math.floor(timeDiffernce / 3.15576e10);
+    const totalMonths = Math.floor((timeDiffernce - (3.15576e10 * totalYears)) / 2.6298e9);
+    const totalDays = currentDate.getDate() - inputDate.getDate();
+    resultYears.innerHTML = totalYears;
+    resultMonths.innerHTML = totalMonths;
+    resultDays.innerHTML = totalDays;
+
 };
 
-const verifyInput = (event) => {
+const verifyInput = () => {
     // Verify if input has valid numerical input
     verifyYearInput();
     verifyMonthInput();
     verifyDayInput();
-
+    
     // Verify if date is in the past
-    const inputDate = new Date(yearInput.value, monthInput.value - 1, dayInput.value);
-    const timeDiffernce = currentDate - inputDate;
-    if (timeDiffernce >= 0) {
-        console.log("passed")
+    if (yearError.style.visibility === "hidden" && monthError.style.visibility === "hidden" && dayError.style.visibility === "hidden") {
+        const inputDate = new Date(yearInput.value, monthInput.value - 1, dayInput.value);
+        if (currentDate - inputDate >= 0) {
+            // error visibility hidden
+            // allow submit
+            button.disabled = false;
+            console.log("passed")
+        }
+        else {
+            // error showing must be past date
+            // disable submit
+            button.disabled = true;
+            console.log("failed");
+        }
     }
-    else {
-        console.log("failed");
-    }
-    console.log("seconds", timeDiffernce / 1000);
-    const totalYears = Math.floor(timeDiffernce / 3.15576e10);
-    const totalMonths = Math.floor((timeDiffernce - (3.15576e10 * totalYears)) / 2.6298e9);
-    const totalDays = currentDate.getDate() - inputDate.getDate();
-    console.log("year", totalYears);
-    console.log("month", totalMonths);
-    console.log("day", totalDays);
-};
+}
 
 document.getElementById("submit").addEventListener("click", submitCalculation);
 document.querySelectorAll("input").forEach((input) => input.addEventListener("input", verifyInput));

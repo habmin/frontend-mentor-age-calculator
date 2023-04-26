@@ -18,23 +18,46 @@
       <div class="input-bar">
         <div class="day-input">
           <label class="form-label" for="day">DAY</label>
-          <input class="form-input" type="number" id="day" name="day" max="31" min="1" maxlength="2"/>
-          <p class="error" id="day-error">test</p>
+          <input 
+            class="form-input" 
+            type="number" 
+            id="day" 
+            name="day" 
+            max="31" 
+            min="1" 
+            maxlength="2" 
+            placeholder="DD"/>
+          <p class="error" id="day-error">Must be a valid day</p>
         </div>
         <div class="month-input">
           <label class="form-label" for="month">MONTH</label>
-          <input class="form-input" type="number" id="month" name="month" max="12" min="1" maxlength="2"/>
-          <p class="error" id="month-error">test</p>
+          <input 
+            class="form-input"
+            type="number"
+            id="month" 
+            name="month" 
+            max="12" 
+            min="1" 
+            maxlength="2" 
+            placeholder="MM"/>
+          <p class="error" id="month-error">Must be a valid month</p>
         </div>
         <div class="year-input">
           <label class="form-label" for="year">YEAR</label>
-          <input class="form-input" type="number" id="year" name="year" min="1000" maxlength="4"/>
-          <p class="error" id="year-error">test</p>
+          <input 
+            class="form-input" 
+            type="number" 
+            id="year" 
+            name="year" 
+            min="1000" 
+            maxlength="4"
+            placeholder="YYYY"/>
+          <p class="error" id="year-error">Must be a valid year</p>
         </div>
       </div>
 
       <div class="submit-bar">
-        <button id="submit" class="submit-arrow">
+        <button id="submit" class="submit-arrow" disabled>
           <img src="assets/images/icon-arrow.svg"/>
         </button>
         <div class="bar"></div>
