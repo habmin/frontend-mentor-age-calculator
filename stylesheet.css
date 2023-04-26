@@ -111,7 +111,7 @@ body {
     border-radius: 30px 30px 190px 30px;
     width: 100%;
     max-width: 850px;
-    height: 640px;
+    height: 660px;
     display: flex;
     flex-flow: column nowrap;
 }
@@ -269,15 +269,16 @@ footer {
 @media screen and (max-width: 700px) {
     .age-calc-box {
         height: fit-content;
-        padding: 0 0 5rem 0;
+        padding: 0 0 1.5rem 0;
         border-radius: 30px 30px 100px 30px;
     }
 
     .input-bar {
-        margin: 3rem 1.5rem 1.5rem 1.5rem;
+        margin: 2.5rem 1.5rem 1.5rem 1.5rem;
         padding: 0;
-        width: 100%;
+        width: 90%;
         justify-content: center;
+        align-items: right;
     }
 
     .day-input, .month-input, .year-input{
@@ -300,7 +301,8 @@ footer {
     }
 
     .error {
-        width: 90%;
+        width: 80%;
+        opacity: 1;
     }
 
     .submit-bar {
@@ -325,6 +327,10 @@ footer {
         width: 6.6vw;
     }
 
+    .results-line {
+        margin-bottom: 2rem;
+    }
+
     .results-box {
         margin: 1.5rem 0 0 0;
         padding: 0;
@@ -334,5 +340,9 @@ footer {
         font-size: 14vw;
         margin: -2rem 0 -2rem 1.5rem;
         letter-spacing: -.08rem;
+    }
+
+    .results-label {
+        margin-left: 2rem;
     }
 }
