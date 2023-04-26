@@ -162,7 +162,8 @@ body {
     font-style: italic;
     margin: 5px 0 5px 0;
     padding: 0;
-    /* visibility: hidden; */
+    visibility: hidden;
+    transition: border linear 0.3s;
 }
 
 .submit-bar {
@@ -192,6 +193,10 @@ body {
 
 #submit:active {
     background-color: var(--off_black);
+}
+
+#submit:disabled{
+    background-color: var(--smokey_grey);
 }
 
 .results-box {

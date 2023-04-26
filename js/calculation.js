@@ -78,25 +78,25 @@ const submitCalculation = () => {
 
 const verifyInput = () => {
     // Verify if input has valid numerical input
-    verifyYearInput();
-    verifyMonthInput();
-    verifyDayInput();
+    const yearCheck = verifyYearInput();
+    const monthCheck = verifyMonthInput();
+    const dayCheck = verifyDayInput();
     
     // Verify if date is in the past
-    if (yearError.style.visibility === "hidden" && monthError.style.visibility === "hidden" && dayError.style.visibility === "hidden") {
+    if (yearCheck && monthCheck && dayCheck && yearInput.value && monthInput.value && dayInput.value) {
         const inputDate = new Date(yearInput.value, monthInput.value - 1, dayInput.value);
         if (currentDate - inputDate >= 0) {
-            // error visibility hidden
-            // allow submit
             button.disabled = false;
-            console.log("passed")
+            dayError.style.visibility = "hidden";
         }
         else {
-            // error showing must be past date
-            // disable submit
             button.disabled = true;
-            console.log("failed");
+            dayError.innerHTML = "Must be a past date";
+            dayError.style.visibility = "visible";
         }
+    }
+    else {
+        button.disabled = true;
     }
 }
 
