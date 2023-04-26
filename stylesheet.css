@@ -136,6 +136,7 @@ body {
     font-size: .90rem;
     letter-spacing: 0.25em;
     margin: .4rem 0 .4rem 0;
+    transition: color linear .1s;
 }
 
 .form-input {
@@ -143,7 +144,7 @@ body {
     font-weight: 700;
     color: var(--off_black);
     box-shadow: none;
-    border: 1px solid;
+    border: 2px solid;
     border-color: var(--light_grey);
     font-size: 1.9rem;
     border-radius: 10px;
@@ -152,6 +153,7 @@ body {
 
 .form-input:focus {
     border-color: var(--purple);
+    transition: border linear 0.1s;
     outline: none;
 }
 
@@ -162,8 +164,8 @@ body {
     font-style: italic;
     margin: 5px 0 5px 0;
     padding: 0;
-    visibility: hidden;
-    transition: border linear 0.3s;
+    opacity: 0;
+    transition: opacity linear 0.1s;
 }
 
 .submit-bar {

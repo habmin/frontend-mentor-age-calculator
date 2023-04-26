@@ -12,10 +12,48 @@ const yearError = document.getElementById("year-error");
 const monthError = document.getElementById("month-error");
 const dayError = document.getElementById("day-error");
 
-const button = document.getElementById("submit");
-button.disabled = true;
+const formLabels = document.querySelectorAll(".form-label");
 
-yearInput.setAttribute("max", `${currentDate.getFullYear()}`);
+const button = document.getElementById("submit");
+
+const lightRedVar = window.getComputedStyle(document.body).getPropertyValue("--light_red");
+const lightGreyVar = window.getComputedStyle(document.body).getPropertyValue("--light_gray");
+const smokeyGreyVar = window.getComputedStyle(document.body).getPropertyValue("--smokey_gray");
+
+const errorDisplay = (show, formNum) => {
+    const elements = [[dayError, dayInput], [monthError, monthInput], [yearError, yearInput]]
+    const labels = ["valid day", "valid month", "valid year", "past date"];
+    if (formNum !== 3) {
+        if (show) {
+            elements[formNum][0].innerHTML = `Must be a ${labels[formNum]}`;
+            elements[formNum][0].style.opacity = "1";
+            elements[formNum][1].style.borderColor = lightRedVar;
+            formLabels[formNum].style.color = lightRedVar;
+        }
+        else {
+            elements[formNum][0].style.opacity = "0";
+            elements[formNum][1].style.borderColor = lightGreyVar;
+            formLabels[formNum].style.color = smokeyGreyVar;
+        }
+    }
+    else {
+        if (show) {
+            elements.forEach((element) => {
+                element[0].innerHTML = `Must be a ${labels[formNum]}`;
+                element[0].style.opacity = "1";
+                element[1].style.borderColor = lightRedVar;
+            });
+            formLabels.forEach((label) => {label.style.color = lightRedVar});
+        }
+        else {
+            elements.forEach((element) => {
+                element[0].style.opacity = "0";
+                element[1].style.borderColor = lightGreyVar;
+            });
+            formLabels.forEach((label) => {label.style.color = smokeyGreyVar});
+        }
+    }
+}
 
 const verifyDayInput = () => {
     // Init at 31 for Jan, March, May, July, Aug, Oct, Dec and Empty String
@@ -26,38 +64,38 @@ const verifyDayInput = () => {
     // If Feb, check to see if leap year for 29, otherwise 28
     else if (monthInput.value == 2)
         maxDay = yearInput.value % 4 === 0 ? 29 : 28;
-
     if (dayInput.checkValidity() && dayInput.value <= maxDay) {
-        dayError.style.visibility = "hidden";
+        errorDisplay(false, 0);
         return true;
     }
     else {
-        dayError.innerHTML = "Must be a valid day";
-        dayError.style.visibility = "visible";
+        errorDisplay(true, 0);
         return false;
     }
 };
 
 const verifyMonthInput = () => {
     if (monthInput.checkValidity()) {
-        monthError.style.visibility = "hidden";
+        errorDisplay(false, 1);
         return true;
     }
     else {
-        monthError.innerHTML = "Must be a valid month";
-        monthError.style.visibility = "visible";
+        errorDisplay(true, 1);
         return false;
     }
 };
 
 const verifyYearInput = () => {
-    if (yearInput.checkValidity()) {
-        yearError.style.visibility = "hidden";
+    console.log(yearInput.value > currentDate.getFullYear())
+    if (yearInput.value > currentDate.getFullYear()) {
+        errorDisplay(true, 3);
+    }
+    else if (yearInput.checkValidity()) {
+        errorDisplay(false, 2);
         return true;
     }
     else {
-        yearError.innerHTML = "Must be a valid year";
-        yearError.style.visibility = "visible";
+        errorDisplay(true, 2);
         return false;
     }
 };
@@ -78,21 +116,20 @@ const submitCalculation = () => {
 
 const verifyInput = () => {
     // Verify if input has valid numerical input
-    const yearCheck = verifyYearInput();
-    const monthCheck = verifyMonthInput();
     const dayCheck = verifyDayInput();
+    const monthCheck = verifyMonthInput();
+    const yearCheck = verifyYearInput();
     
     // Verify if date is in the past
     if (yearCheck && monthCheck && dayCheck && yearInput.value && monthInput.value && dayInput.value) {
         const inputDate = new Date(yearInput.value, monthInput.value - 1, dayInput.value);
         if (currentDate - inputDate >= 0) {
             button.disabled = false;
-            dayError.style.visibility = "hidden";
+            errorDisplay(false, 3);
         }
         else {
             button.disabled = true;
-            dayError.innerHTML = "Must be a past date";
-            dayError.style.visibility = "visible";
+            errorDisplay(true, 3);
         }
     }
     else {
