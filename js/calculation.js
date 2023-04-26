@@ -104,8 +104,17 @@ const verifyYearInput = () => {
 };
 
 
-const scrambledDisplay = (number) => {
-    return 
+const scrambledDisplay = (element, number, delay) => {
+    const max = "9".repeat(number.toString().length);
+    const min = `1${"0".repeat(number.toString().length - 1)}`;
+    const scrambler = setInterval(() => {
+        element.innerHTML = Math.floor(Math.random() * (max - min) + max);
+    }, 10);
+    setTimeout(() => {
+        clearInterval(scrambler);
+        element.innerHTML = number;
+    }, delay);
+
 }
 
 const submitCalculation = async () => {    
@@ -119,16 +128,24 @@ const submitCalculation = async () => {
     button.style.backgroundColor = offBlackVar;
     arrowIcon.style.transform = "translateY(100px)";
 
-    resultYears.innerHTML = totalYears;
-    resultMonths.innerHTML = totalMonths;
-    resultDays.innerHTML = totalDays;
+    // resultYears.innerHTML = totalYears;
+    // resultMonths.innerHTML = totalMonths;
+    // resultDays.innerHTML = totalDays;
 
-    button.disabled = false;
-    // arrowIcon.style.transtion = "none";
-    // arrowIcon.style.transform = "translateY(-100px)";
-    // arrowIcon.style.transtion = "transform 2s";
-    // arrowIcon.style.transform = "translateY(0px)";
-    // button.style.backgroundColor = purpleVar;
+    scrambledDisplay(resultYears, totalYears, 500);
+    scrambledDisplay(resultMonths, totalMonths, 1000);
+    scrambledDisplay(resultDays, totalDays, 1500);
+
+    setTimeout(() => {
+        button.disabled = false;
+        arrowIcon.style.visibility = "hidden";
+        arrowIcon.style.transition = "transform .01s";
+        arrowIcon.style.transform = "translateY(-100px)";
+        arrowIcon.style.visibility = "visible";
+        arrowIcon.style.transtion = "transform 3s";
+        arrowIcon.style.transform = "translateY(0px)";
+        button.style.backgroundColor = purpleVar;
+    }, 2000);
 
 
 };
