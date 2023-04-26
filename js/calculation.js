@@ -89,7 +89,6 @@ const verifyMonthInput = () => {
 };
 
 const verifyYearInput = () => {
-    console.log(yearInput.value > currentDate.getFullYear())
     if (yearInput.value > currentDate.getFullYear()) {
         errorDisplay(true, 3);
     }
@@ -128,24 +127,21 @@ const submitCalculation = async () => {
     button.style.backgroundColor = offBlackVar;
     arrowIcon.style.transform = "translateY(100px)";
 
-    // resultYears.innerHTML = totalYears;
-    // resultMonths.innerHTML = totalMonths;
-    // resultDays.innerHTML = totalDays;
-
     scrambledDisplay(resultYears, totalYears, 500);
     scrambledDisplay(resultMonths, totalMonths, 1000);
     scrambledDisplay(resultDays, totalDays, 1500);
 
     setTimeout(() => {
-        button.disabled = false;
         arrowIcon.style.visibility = "hidden";
-        arrowIcon.style.transition = "transform .01s";
         arrowIcon.style.transform = "translateY(-100px)";
+    }, 1000)
+
+    setTimeout(() => {
+        button.disabled = false;
         arrowIcon.style.visibility = "visible";
-        arrowIcon.style.transtion = "transform 3s";
         arrowIcon.style.transform = "translateY(0px)";
         button.style.backgroundColor = purpleVar;
-    }, 2000);
+    }, 1650);
 
 
 };
