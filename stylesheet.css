@@ -215,21 +215,33 @@ img:active {
 }
 
 .results-box {
-    margin: 0 3rem 3rem 3rem;
+    margin: -3rem 3rem 3rem 3rem;
+}
+
+.results-line {
+    display: flex;
+    flex-flow: row nowrap;
 }
 
 .results-text {
     font-weight: 800;
     font-style: italic;
     font-size: 5.9rem;
-    padding: 0;
-    margin: -3rem 0 -3rem 0;
+    padding: 0 0 1rem 0;
+    margin: 0 0 -3rem 0;
 }
 
 #result-years, #result-months, #result-days {
+    position: absolute;
     color: var(--purple);
 }
 
+.results-label {
+    position: relative;
+    left: 2ch;
+    margin-left: .6rem;
+    transition: left .5s cubic-bezier(.1, .4, .5, 1);
+}
 
 /* ************* */
 /* Footer Styles */

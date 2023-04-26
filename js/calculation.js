@@ -17,6 +17,8 @@ const formLabels = document.querySelectorAll(".form-label");
 const button = document.getElementById("submit");
 const arrowIcon = document.getElementById("arrow-icon");
 
+const resultLabels = document.querySelectorAll(".results-label");
+
 const purpleVar = window.getComputedStyle(document.body).getPropertyValue("--pruple");
 const lightRedVar = window.getComputedStyle(document.body).getPropertyValue("--light_red");
 const lightGreyVar = window.getComputedStyle(document.body).getPropertyValue("--light_gray");
@@ -103,15 +105,18 @@ const verifyYearInput = () => {
 };
 
 
-const scrambledDisplay = (element, number, delay) => {
-    const max = "9".repeat(number.toString().length);
-    const min = `1${"0".repeat(number.toString().length - 1)}`;
+const scrambledDisplay = (element, label, number, delay) => {
+    const stringNumber = number.toString()
+    label.style.left = `${stringNumber.length}ch`;
+    const max = "9".repeat(stringNumber.length);
+    const min = `1${"0".repeat(stringNumber.length - 1)}`;
     const scrambler = setInterval(() => {
         element.innerHTML = Math.floor(Math.random() * (max - min) + max);
     }, 10);
     setTimeout(() => {
         clearInterval(scrambler);
         element.innerHTML = number;
+        label.style.left = `${element.offsetWidth}px`;
     }, delay);
 
 }
@@ -127,9 +132,9 @@ const submitCalculation = async () => {
     button.style.backgroundColor = offBlackVar;
     arrowIcon.style.transform = "translateY(100px)";
 
-    scrambledDisplay(resultYears, totalYears, 500);
-    scrambledDisplay(resultMonths, totalMonths, 1000);
-    scrambledDisplay(resultDays, totalDays, 1500);
+    scrambledDisplay(resultYears, resultLabels[0], totalYears, 500);
+    scrambledDisplay(resultMonths, resultLabels[1], totalMonths, 1000);
+    scrambledDisplay(resultDays, resultLabels[2], totalDays, 1500);
 
     setTimeout(() => {
         arrowIcon.style.visibility = "hidden";
@@ -140,9 +145,8 @@ const submitCalculation = async () => {
         button.disabled = false;
         arrowIcon.style.visibility = "visible";
         arrowIcon.style.transform = "translateY(0px)";
-        button.style.backgroundColor = purpleVar;
+        button.style.backgroundColor = purpleVar;   
     }, 1650);
-
 
 };
 
