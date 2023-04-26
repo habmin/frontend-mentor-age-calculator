@@ -157,12 +157,12 @@ body {
 
 .error {
     color: var(--light_red);
-    font-size: .9rem;
+    font-size: .8rem;
     font-weight: 400;
     font-style: italic;
     margin: 5px 0 5px 0;
     padding: 0;
-    visibility: hidden;
+    /* visibility: hidden; */
 }
 
 .submit-bar {
@@ -241,15 +241,16 @@ footer {
     }
 
     .input-bar {
-        margin: 3rem .05rem .05rem .05rem;
+        margin: 3rem 1.5rem 1.5rem 1.5rem;
         padding: 0;
         width: 100%;
-        justify-content: space-evenly;
+        justify-content: center;
     }
 
     .day-input, .month-input, .year-input{
         margin: 0;
         padding: 0;
+        width: 33%;
     }
 
     .form-label {
@@ -259,15 +260,20 @@ footer {
     }
 
     .form-input {
-        font-size: 5.5vw;
+        font-size: 4.5vw;
         height: 1.6rem;
-        width: 12vw;
+        width: 14.5vw;
+        padding: .8rem;
+    }
+
+    .error {
+        width: 90%;
     }
 
     .submit-bar {
         position: relative;
         text-align: center;
-        margin: 2rem 1.1rem 1.5rem 1.1rem;
+        margin: 2rem 1.5rem 1.5rem 1.5rem;
     }
 
     #submit {
@@ -277,13 +283,13 @@ footer {
         background-color: var(--purple);
         border-radius: 50%;
         border: none;
-        height: 4.0rem;
-        width: 4.0rem;
+        height: 14.5vw;
+        width: 14.5vw;
     }
 
     #submit img {
-        height: 1.75rem;
-        width: 1.75rem;
+        height: 6.6vw;
+        width: 6.6vw;
     }
 
     .results-box {
@@ -293,7 +299,7 @@ footer {
     
     .results-text {
         font-size: 15.2vw;
-        margin: -2rem 0 -2rem 1.1rem;
+        margin: -2rem 0 -2rem 1.5rem;
         letter-spacing: -.08rem;
     }
 }
