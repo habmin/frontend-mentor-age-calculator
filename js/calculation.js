@@ -34,9 +34,7 @@ const offBlackVar = window.getComputedStyle(document.body).getPropertyValue("--o
 /*------------------------ Input Verifiers -------------------------*/
 /********************************************************************/
 
-// Verifies day input is numeric from 1 to max value
-// based on Month and year inputs
-const verifyDayInput = () => {
+const daysInTheMonth = () => {
     // Init at 31 for Jan, March, May, July, Aug, Oct, Dec and Empty String
     let maxDay = 31;
     // max at 30 if month is APril, June, Sept, Nov
@@ -45,6 +43,13 @@ const verifyDayInput = () => {
     // If Feb, check to see if leap year for 29, otherwise 28
     else if (monthInput.value == 2)
         maxDay = yearInput.value % 4 === 0 ? 29 : 28;
+    return maxDay;    
+}
+
+// Verifies day input is numeric from 1 to max value
+// based on Month and year inputs
+const verifyDayInput = () => {
+    const maxDay = daysInTheMonth();
 
     if (dayInput.checkValidity() && dayInput.value <= maxDay) {
         errorDisplay(false, 0);
@@ -181,8 +186,12 @@ const submitCalculation = () => {
     const timeDiffernce = currentDate - inputDate;
     const totalYears = Math.floor(timeDiffernce / 3.15576e10);
     const totalMonths = Math.floor((timeDiffernce - (3.15576e10 * totalYears)) / 2.6298e9);
-    const totalDays = currentDate.getDate() - inputDate.getDate();
-    
+    let totalDays = 0;
+    if (currentDate.getDate() >= inputDate.getDate())
+        totalDays = currentDate.getDate() - inputDate.getDate();
+    else 
+        totalDays = (daysInTheMonth() - inputDate.getDate()) + currentDate.getDate();
+
     // Start displaying output of calculations
     
     // Disable button and show active state with arrow animation
