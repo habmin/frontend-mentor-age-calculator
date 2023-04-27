@@ -34,6 +34,7 @@ const offBlackVar = window.getComputedStyle(document.body).getPropertyValue("--o
 /*------------------------ Input Verifiers -------------------------*/
 /********************************************************************/
 
+// Used to calculate the max days in a month based on the month input value
 const daysInTheMonth = () => {
     // Init at 31 for Jan, March, May, July, Aug, Oct, Dec and Empty String
     let maxDay = 31;
