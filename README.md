@@ -6,7 +6,7 @@
 
 <h1 align="center">Frontend Mentor - Result Summary Component</h1>
 <div align="center">
-    <h2><a href="https://github.com/habmin/frontend-mentor-age-calculator">Live Link</a> | <a href="https://www.frontendmentor.io/solutions/age-calculator-with-some-transition-animations-jshtmlcss-96p7AVSeTP">Solution Link</a></h2>
+    <h2><a href="https://habmin.github.io/frontend-mentor-age-calculator/">Live Link</a> | <a href="https://www.frontendmentor.io/solutions/age-calculator-with-some-transition-animations-jshtmlcss-96p7AVSeTP">Solution Link</a></h2>
 </div>
 <br>
 
